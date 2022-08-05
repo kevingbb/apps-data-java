@@ -1,0 +1,17 @@
+{
+    "java.project.sourcePaths": [
+        "blair/src"
+    ],
+    "java.project.outputPath": "blair/bin",
+    "java.project.referencedLibraries": [
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "maven.excludedFolders": [
+        "**/.*",
+        "**/node_modules",
+        "**/target",
+        "**/bin",
+        "**/archetype-resources",
+        "."
+    ]
+}
