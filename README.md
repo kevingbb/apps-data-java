@@ -6,8 +6,16 @@
 2. Start API on http://localhost:8080
 
 ```bash
-cd blair
+cd api
+# Run Spring Boot api App
 ./mvnw spring-boot:run
+```
+
+```bash
+# Build Spring Boot api Container Image
+./mvnw spring-boot:build-image
+# Run & Test Container Image Locally
+docker run -it --rm -p 8080:8080 --network=host -e="SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/javaspringtest" appsdata:0.0.1-SNAPSHOT
 ```
 
 3. Start UI on http://localhost:8081
