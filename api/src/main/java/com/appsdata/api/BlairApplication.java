@@ -15,6 +15,8 @@ import com.appsdata.api.repositories.TutorialRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.microsoft.applicationinsights.attach.ApplicationInsights;
+
 @EnableRetry
 @SpringBootApplication
 public class BlairApplication {
@@ -25,6 +27,7 @@ public class BlairApplication {
 		logger.info("this is a info message");
 		logger.warn("this is a warn message");
 		logger.error("this is a error message");
+		ApplicationInsights.attach();
 		SpringApplication.run(BlairApplication.class, args);
 	}
 
