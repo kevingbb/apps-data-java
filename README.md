@@ -13,9 +13,10 @@ cd api
 
 ```bash
 # Build Spring Boot api Container Image
-./mvnw spring-boot:build-image
+./mvnw clean install spring-boot:repackage
+docker build -t appsdata-java/api:v1 .
 # Run & Test Container Image Locally
-docker run -it --rm -p 8080:8080 --network=host -e="SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/javaspringtest" appsdata:0.0.1-SNAPSHOT
+docker run -it --rm -p 8080:8080 --name appsdata-api --network=host -e="SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/javaspringtest" appsdata-java/api:v1
 ```
 
 3. Start UI on http://localhost:8081
@@ -24,4 +25,11 @@ docker run -it --rm -p 8080:8080 --network=host -e="SPRING_DATASOURCE_URL=jdbc:p
 cd ui
 npm install
 npm run serve
+```
+
+```bash
+# Build Vue ui Container Image
+docker build -t appsdata-java/ui:v1 .
+# Run & Test Container Image Locally
+docker run -it --rm -p 8080:80 --name appsdata-ui appsdata-java/ui:v1
 ```
