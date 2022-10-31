@@ -10,10 +10,12 @@ const appInsights = new ApplicationInsights({
     config: {
         connectionString: config.APPLICATIONINSIGHTS_CONNECTION_STRING,
         enableCorsCorrelation: true,
-        distributedTracingMode: ApplicationInsights.AI_AND_W3C,
+        distributedTracingMode: ApplicationInsights.W3C,
         enableRequestHeaderTracking: true,
         enableResponseHeaderTracking: true,
-        enableAutoRouteTracking: true
+        enableAutoRouteTracking: true,
+        autoTrackPageVisitTime: true,
+        enableSessionStorageBuffer: true
     }
 });
 appInsights.loadAppInsights();

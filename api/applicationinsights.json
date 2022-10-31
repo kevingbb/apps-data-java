@@ -1,0 +1,9 @@
+{
+  "connectionString": "",
+  "role": {
+    "name": "AppsDataJavaAPI"
+  },
+  "selfDiagnostics": {
+    "level": "info"
+  }
+}
