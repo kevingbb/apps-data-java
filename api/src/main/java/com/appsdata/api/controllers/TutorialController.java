@@ -53,26 +53,26 @@ public class TutorialController {
 
     // Post to /tutorials, takes in request body which must be of type Tutorial
     @PostMapping("/tutorials")
-    public ResponseEntity<String> createTutorial(@RequestBody Tutorial newTutorial){
+    public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial newTutorial){
         logger.info("createTutorial.");
         return ResponseEntity.ok(service.createTutorial(newTutorial)); // returns all tutorials
     }
 
-    // put to /tutorials/:id, takes in the body and url param id
+    // Put to /tutorials/:id, takes in the body and url param id
     @PutMapping("/tutorials/{id}")
     public ResponseEntity<String> updateTutorial(@RequestBody Tutorial updatedTutorial, @PathVariable Integer id){
         logger.info("updateTutorial.");
         return ResponseEntity.ok(service.updateTutorial(updatedTutorial, id)); // return all tutorials
     }
 
-    // delete request to /tutorials/:id, deletes person based on id param
+    // Delete request to /tutorials/:id, deletes person based on id param
     @DeleteMapping("/tutorials/{id}")
     public ResponseEntity<String> deleteTutorial(@PathVariable Integer id){
         logger.info("deleteTutorial.");
         return ResponseEntity.ok(service.deleteTutorial(id)); // delete single tutorial
     }
 
-    // delete request to /tutorials/:id, deletes person based on id param
+    // Delete request to /tutorials/:id, deletes person based on id param
     @DeleteMapping("/tutorials")
     public ResponseEntity<String> deleteAllTutorials(){
         logger.info("deleteTutorials.");

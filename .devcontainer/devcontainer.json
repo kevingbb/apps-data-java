@@ -41,7 +41,7 @@
 			"moby": true
 		},
 		"kubectl-helm-minikube": {
-			"version": "1.23",
+			"version": "1.26",
 			"helm": "latest",
 			"minikube": "none"
 		},

@@ -32,7 +32,13 @@ public class TutorialService
             }
             Integer totalItems = (int)pagedResult.getTotalElements();
             Integer totalPages = (int)Math.ceil((double)totalItems / (double)size);
-         
+
+            // Create random delay between 1 to 2 seconds 10 percent of the time
+            boolean latency = Boolean.parseBoolean(System.getenv("LATENCY"));
+            if (latency == true && Math.random() < 0.10) {
+                Thread.sleep((long)(Math.random() * 1000 + 1000));
+            }
+            
             if(pagedResult.hasContent()) {
                 return new PagedTutorial(totalItems, pagedResult.getContent(), totalPages, page);
             }
@@ -42,6 +48,9 @@ public class TutorialService
         }
         catch (RuntimeException exc) {
             throw new RuntimeException("Getting tutorials failed:" + exc.getMessage());
+        }
+        catch (InterruptedException exc) {
+            throw new RuntimeException("Getting tutorials sleep failed:" + exc.getMessage());
         }
     }
 
@@ -56,10 +65,11 @@ public class TutorialService
         }
     }
 
-    public String createTutorial(Tutorial newTutorial) throws RuntimeException {
+    public Tutorial createTutorial(Tutorial newTutorial) throws RuntimeException {
         try {
             Tutorial.save(newTutorial); //creates new tutorial
-            return "Tutorial was created successfully.";
+            // return ("Tutorial " + newTutorial.getId() + " was created successfully.");
+            return (newTutorial);
         }
         catch (RuntimeException exc) {
             throw new RuntimeException("Create tutorial failed:" + exc.getMessage());
